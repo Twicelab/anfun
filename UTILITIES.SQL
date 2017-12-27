@@ -42,3 +42,12 @@ BEGIN
 END
 $func$
 LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION mini(a numeric, b numeric)
+	RETURNS NUMERIC AS
+$func$
+BEGIN 
+	IF a<b THEN RETURN a; ELSE RETURN b; END IF;
+END
+$func$
+LANGUAGE plpgsql;
