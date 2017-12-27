@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION random2DimDotsCircles(k integer, h integer)
+CREATE OR REPLACE FUNCTION random2DimDotsCircles(k integer, h integer,w numeric)
 	RETURNS table(id int, X numeric, Y numeric) AS
 $func$
 DECLARE
@@ -7,13 +7,13 @@ DECLARE
 	ly numeric;
 BEGIN
 FOR f in 1..h LOOP
-	ox:=random(); 
+	ox:=f; 
 	FOR r in 1..k LOOP
     	id:=r+(f-1)*k; 
-        lx:=(random()-0.5)/h;
+        lx:=(random()-0.5);
         ly:=(random()-0.5);
-        X:=sin(2*3.141593*ly)*(ox+lx); 
-        Y:=cos(2*3.141593*ly)*(ox+lx);
+        X:=sin(2*3.141593*ly)*(ox+lx*lx*lx*w); 
+        Y:=cos(2*3.141593*ly)*(ox+lx*lx*lx*w);
         RETURN NEXT;     
 	END LOOP;
 END LOOP;
