@@ -1,4 +1,3 @@
-## postgres-analytical
 PostegreSQL have no included analytical functions. Therefore we present you...
 
 # PostgreSQL Analytical Package
