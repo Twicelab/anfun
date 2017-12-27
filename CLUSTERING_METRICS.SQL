@@ -1,10 +1,10 @@
-CREATE OR REPLACE FUNCTION Sillhuette(_tbl varchar)
-returns numeric as
+CREATE OR REPLACE FUNCTION Sillhuette(_data varchar) -- на вход подается таблица полученная в результате кластеризации
+returns numeric as -- выход - число, значение метрики силуэт
 $func$
 DECLARE S numeric;
 BEGIN
 CREATE TEMPORARY TABLE TT (id integer, x numeric, y numeric, c integer);
-INSERT INTO TT SELECT * FROM dots2DimClusteredShow(_tbl);
+INSERT INTO TT SELECT * FROM dots2DimClusteredShow(_data);
 SELECT AVG("dist")INTO S FROM (
 SELECT "c",AVG("dist") as dist FROM (
 SELECT a."id",a."c",(b."dist"-a."dist")/MAXI(b."dist",a."dist") as dist FROM (
