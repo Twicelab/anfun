@@ -31,7 +31,7 @@ BEGIN
 	d:=0;
 	FOR r in 1..k LOOP
         X:=r; 
-        d:=d+sin(o*r)+l*(random()-0.5)*(random()-0.5);
+        d:=d+sin(2.0*pi()/k*o*r)+l*(random()-0.5)*(random()-0.5);
         Y:=d;
         RETURN NEXT;     
 	END LOOP;
