@@ -1,3 +1,13 @@
+CREATE OR REPLACE FUNCTION dist(x1 numeric,y1 numeric,x2 numeric,y2 numeric, p numeric default 2.0)
+	RETURNS numeric AS
+$func$
+DECLARE S numeric;
+BEGIN
+S:=POWER(POWER(ABS(x1-x2),p)+POWER(ABS(y1-y2),p),1.0/p);
+END
+$func$
+LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION dots2DimShow(_tbl varchar)
   RETURNS table(id int, X numeric, Y numeric) AS
 $func$
