@@ -4,6 +4,7 @@ $func$
 DECLARE S numeric;
 BEGIN
 S:=POWER(POWER(ABS(x1-x2),p)+POWER(ABS(y1-y2),p),1.0/p);
+RETURN S;
 END
 $func$
 LANGUAGE plpgsql;
@@ -39,7 +40,7 @@ CREATE OR REPLACE FUNCTION initClusters(_tbl varchar)
 	RETURNS table(id int, X numeric, Y numeric, C int) AS
 $func$
 BEGIN
-	RETURN QUERY EXECUTE 'SELECT s."id", s."x", s."y", s."id" as "c" FROM shw('''||_tbl||''') s';
+	RETURN QUERY EXECUTE 'SELECT s."id", s."x", s."y", s."id" as "c" FROM dots2DimShow('''||_tbl||''') s';
 END
 $func$
 LANGUAGE plpgsql;
