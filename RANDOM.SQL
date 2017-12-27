@@ -7,13 +7,13 @@ DECLARE
 	ly numeric;
 BEGIN
 FOR f in 1..h LOOP
-	ox:=random(); 
+	ox:=f; 
 	FOR r in 1..k LOOP
     	id:=r+(f-1)*k; 
-        lx:=(random()-0.5)/h;
+        lx:=(random()-0.5);
         ly:=(random()-0.5);
-        X:=sin(2*3.141593*ly)*(ox+lx); 
-        Y:=cos(2*3.141593*ly)*(ox+lx);
+        X:=sin(2*3.141593*ly)*(ox+lx*lx*lx*2); 
+        Y:=cos(2*3.141593*ly)*(ox+lx*lx*lx*2);
         RETURN NEXT;     
 	END LOOP;
 END LOOP;
