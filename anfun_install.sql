@@ -1,5 +1,4 @@
-
---CREATE SCHEMA AnFun;
+CREATE SCHEMA AnFun;
 
 CREATE OR REPLACE FUNCTION anfun.dist(x1 numeric,y1 numeric,x2 numeric,y2 numeric, p numeric default 2.0)
 RETURNS numeric AS
@@ -144,9 +143,9 @@ $func$
 		INSERT INTO TT SELECT * FROM anfun.initClusters(_tbl);
 		CREATE TEMPORARY TABLE TTT (id integer, NN integer);
 		INSERT INTO TTT SELECT a."id", COUNT(*)-1 as NN FROM TT a
-		JOIN TT b on (dist(a."x",a."y",b."x",b."y",p)<e)
+		JOIN TT b on (anfun.dist(a."x",a."y",b."x",b."y",p)<e)
 		GROUP BY a."id",a."x",a."y";
-		UPDATE TT SET C=-1 FROM TTT WHERE TTT."nn"<n and (TT."id"=TTT."id");
+		UPDATE TT SET "c"=-1 FROM TTT WHERE TTT."nn"<n and (TT."id"=TTT."id");
 		LOOP
 			CREATE TEMPORARY TABLE TTTT (id integer, CC integer);
 			INSERT INTO TTTT SELECT b."id", min(a."c") as CC FROM TT a
@@ -156,7 +155,7 @@ $func$
 			SELECT COUNT(*) INTO WAT FROM TT join TTTT on 
             (TT."id"=TTTT."id") and (TT."c"!=TTTT."cc");
 			IF WAT>0 THEN
-				UPDATE TT SET C=CC FROM TTTT WHERE (TT."id"=TTTT."id");
+				UPDATE TT SET "c"=TTTT."cc" FROM TTTT WHERE (TT."id"=TTTT."id");
 			ELSE 
             	EXIT;
 			END IF;
@@ -350,7 +349,7 @@ $func$
 	DECLARE 
     	S numeric;
 	BEGIN
-		CREATE TEMPORARY TABLE anfun.TT1 (x integer, y numeric);
+		CREATE TEMPORARY TABLE TT1 (x integer, y numeric);
 		INSERT INTO TT1 SELECT * FROM anfun.timeSeriesShow(_tbl1);
 		CREATE TEMPORARY TABLE TT2 (x integer, y numeric);
 		INSERT INTO TT2 SELECT * FROM anfun.timeSeriesShow(_tbl2);
