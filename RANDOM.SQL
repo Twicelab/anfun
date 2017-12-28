@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION random2DimDotsCircles(k integer, h integer,w numeric)
+CREATE OR REPLACE FUNCTION anfun.random2DimDotsCircles(k integer, h integer,w numeric)
 	RETURNS table(id int, X numeric, Y numeric) AS
 $func$
 DECLARE
@@ -21,7 +21,7 @@ END
 $func$
 LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION random2DimDotsBlobs(k integer, h integer, w numeric)
+CREATE OR REPLACE FUNCTION anfun.random2DimDotsBlobs(k integer, h integer, w numeric)
 	RETURNS table(id int, X numeric, Y numeric) AS
 $func$
 DECLARE 
@@ -46,7 +46,7 @@ END
 $func$
 LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION randomTimeSeries(k integer, o numeric, l numeric)
+CREATE OR REPLACE FUNCTION anfun.randomTimeSeries(k integer, o numeric, l numeric)
 	RETURNS table(X integer, Y numeric) AS
 $func$
 DECLARE d numeric;
