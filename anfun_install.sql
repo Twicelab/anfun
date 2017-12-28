@@ -350,7 +350,7 @@ $func$
 	DECLARE 
     	S numeric;
 	BEGIN
-		CREATE TEMPORARY TABLE anfun.TT1 (x integer, y numeric);
+		CREATE TEMPORARY TABLE TT1 (x integer, y numeric);
 		INSERT INTO TT1 SELECT * FROM anfun.timeSeriesShow(_tbl1);
 		CREATE TEMPORARY TABLE TT2 (x integer, y numeric);
 		INSERT INTO TT2 SELECT * FROM anfun.timeSeriesShow(_tbl2);
