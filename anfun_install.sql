@@ -1,5 +1,4 @@
-
---CREATE SCHEMA AnFun;
+CREATE SCHEMA AnFun;
 
 CREATE OR REPLACE FUNCTION anfun.dist(x1 numeric,y1 numeric,x2 numeric,y2 numeric, p numeric default 2.0)
 RETURNS numeric AS
