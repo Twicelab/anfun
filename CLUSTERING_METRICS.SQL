@@ -1,6 +1,7 @@
 CREATE OR REPLACE FUNCTION anfun.Sillhuette(_data varchar, p numeric default 2.0)
 RETURNS numeric as
 $func$
+
 	DECLARE 
 		S numeric;
 	BEGIN
@@ -17,5 +18,6 @@ $func$
 		DROP TABLE anfun.TT;
 		RETURN S;
 	END
+
 $func$
 LANGUAGE plpgsql;
