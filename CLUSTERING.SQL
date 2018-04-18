@@ -34,6 +34,7 @@ $func$
 $func$
 LANGUAGE plpgsql;
 
+
 CREATE OR REPLACE FUNCTION anfun.KMeans(_tbl varchar, k integer, p numeric default 2.0)
 RETURNS table (id integer, X numeric, Y numeric, C integer) AS
 $func$
