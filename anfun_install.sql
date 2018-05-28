@@ -1,5 +1,15 @@
 CREATE SCHEMA AnFun;
 
+CREATE TABLE TEA (X integer, Y numeric);
+CREATE TABLE SP500 (X integer, Y numeric);
+CREATE TABLE POPULATION (X integer, Y numeric);
+CREATE TABLE SPB_STOPS (ID integer, LATITUDE numeric, LONGITUDE numeric);
+
+COPY TEA FROM 'С:\anfun-master\anfun-master\TEA.csv' DELIMITER ';' CSV HEADER;
+COPY SP500 FROM 'С:\anfun-master\anfun-master\SP500.csv' DELIMITER ';' CSV HEADER;
+COPY POPULATION FROM 'С:\anfun-master\anfun-master\POPULATION.csv' DELIMITER ';' CSV HEADER;
+COPY SPB_STOPS FROM 'С:\anfun-master\anfun-master\SPB_STOPS.csv' DELIMITER ';' CSV HEADER;
+
 CREATE OR REPLACE FUNCTION anfun.dist(x1 numeric,y1 numeric,x2 numeric,y2 numeric, p numeric default 2.0)
 RETURNS numeric AS
 $func$
