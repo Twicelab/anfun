@@ -11,4 +11,4 @@ GRANT USAGE ON SCHEMA anfun TO <user role>
 GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA anfun TO <user role>
 Например: SELECT * FROM anfun.DBSCAN('anfun.random2DimDotsCircles(50,2,1)',3,0.5)
 
-Для установки демнострационной базы, скачанная папка должна быть разархивирована по следующему пути С:\anfun_master\anfun_master 
+Для доступу к демонстрационной базе, файлы пакета должны находиться по следующему пути: С:\anfun_master\anfun_master 
